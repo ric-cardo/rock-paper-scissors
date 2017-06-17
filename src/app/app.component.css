@@ -1,0 +1,30 @@
+.container{
+    display: flex;
+    padding: 0;
+    margin: 0;
+    min-height: 100vh; 
+    flex-direction: column; 
+    justify-content: space-between; 
+    align-items: center; 
+}
+
+.gesture-container{
+    margin: auto;
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.gesture-container button{
+    font-size: 2rem;
+}
+
+.scissors{
+    transform: rotate3d(0,0,1,-90deg)
+}
+
+@media (min-width: 500px) {
+    .gesture-container{
+        width: 300px;
+    }
+}

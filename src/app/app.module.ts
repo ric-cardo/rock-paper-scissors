@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { MdToolbarModule } from '@angular/material';
+import { MdToolbarModule, MdButtonModule } from '@angular/material';
 
 import { AppComponent } from './app.component';
 
@@ -18,7 +18,8 @@ import { AppComponent } from './app.component';
     FormsModule,
     HttpModule,
     BrowserAnimationsModule,
-    MdToolbarModule
+    MdToolbarModule,
+    MdButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
