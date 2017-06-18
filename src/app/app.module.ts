@@ -4,14 +4,20 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { MdToolbarModule, MdButtonModule } from '@angular/material';
+import { 
+  MdToolbarModule, 
+  MdButtonModule,
+  MdDialogModule,
+} from '@angular/material';
 
 import { AppComponent } from './app.component';
-
+import { ResultComponent } from './result/result.component';
+import { GameService } from './game.service';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ResultComponent
   ],
   imports: [
     BrowserModule,
@@ -19,9 +25,10 @@ import { AppComponent } from './app.component';
     HttpModule,
     BrowserAnimationsModule,
     MdToolbarModule,
-    MdButtonModule
+    MdButtonModule,
+    MdDialogModule
   ],
-  providers: [],
+  providers: [GameService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
