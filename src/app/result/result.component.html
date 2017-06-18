@@ -1,9 +1,9 @@
-<h2 md-dialog-title>{{title}}</h2>
+<h2 md-dialog-title class="capitalize">{{title}}</h2>
 <md-dialog-content>
   <div class="gesture" [class.scissors]="isScissors(gesture1)">{{gesture1}}</div>
   <div>V</div>
   <div class="gesture" [class.scissors]="isScissors(gesture2)">{{gesture2}}</div>
 </md-dialog-content>
 <md-dialog-actions>
-  <button md-raised-button md-dialog-close color="accent">play again</button>
+  <button md-raised-button md-dialog-close class="capitalize" color="accent">play again</button>
 </md-dialog-actions>
