@@ -19,10 +19,6 @@
     font-size: 2rem;
 }
 
-.scissors{
-    transform: rotate3d(0,0,1,-90deg)
-}
-
 @media (min-width: 500px) {
     .gesture-container{
         width: 300px;

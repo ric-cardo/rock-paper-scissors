@@ -22,6 +22,7 @@ export class AppComponent {
     const result = this.gameService.getResult(gesture1,gesture2);
 
     this.dialog.open(ResultComponent,{
+      width:'200px',
       data:{
         gesture1,
         gesture2,

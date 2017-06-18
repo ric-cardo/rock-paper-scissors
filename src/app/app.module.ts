@@ -29,6 +29,7 @@ import { GameService } from './game.service';
     MdDialogModule
   ],
   providers: [GameService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents:[ResultComponent]
 })
 export class AppModule { }

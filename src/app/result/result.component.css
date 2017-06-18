@@ -1,0 +1,19 @@
+h2{
+    text-align: center;
+}
+
+md-dialog-content{
+    display: flex;
+    justify-content: space-around;
+    align-items:center;
+}
+
+.gesture{
+    font-size: 3rem;
+}
+
+md-dialog-actions{
+    display: flex;
+    justify-content: center;
+}
+
