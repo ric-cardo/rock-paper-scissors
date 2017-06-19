@@ -11,11 +11,16 @@ import { ResultComponent } from './result/result.component';
 })
 export class AppComponent {
   title = 'rock paper scissors';
+  stats;
 
   constructor(
     public dialog: MdDialog,
     public gameService :GameService
   ){}
+
+  ngOnInit(){
+    this.stats = this.gameService.getStats();
+  }
 
   play(gesture1){
     const gesture2 =  this.gameService.getRandomGesture();
@@ -29,5 +34,13 @@ export class AppComponent {
         result
       }
     });
+
+    this.stats[result]++;
+    this.gameService.saveStats(this.stats);
+  }
+
+  reset(){
+    this.gameService.resetStats();
+    this.stats = this.gameService.getStats();
   }
 }

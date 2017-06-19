@@ -8,6 +8,26 @@
     align-items: center; 
 }
 
+.toolbar-top{
+    display:flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.stats{
+    width:100%;
+    display: flex;
+}
+
+.stats p{
+    margin:0;
+}
+
+.stats div{
+    flex: 1;
+    text-align: center;
+}
+
 .gesture-container{
     margin: auto;
     width: 80%;

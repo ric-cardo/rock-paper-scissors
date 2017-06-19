@@ -1,8 +1,29 @@
 <div class="container">
   <md-toolbar color="primary">
-    <span class="capitalize">
-      {{title}}
-    </span>
+    <div class="toolbar-top">
+      <span class="capitalize">
+        {{title}}
+      </span>
+  
+        <button md-button (click)="reset()" >reset</button>
+    </div>
+
+    <md-toolbar-row>
+      <div class="capitalize stats">
+        <div>
+          <p>w</p>
+          <p>{{stats.win}}</p>
+        </div>
+        <div>
+          <p>d</p>
+          <p>{{stats.draw}}</p>
+        </div>
+        <div>
+          <p>l</p>
+          <p>{{stats.lose}}</p>
+        </div>
+      </div>
+    </md-toolbar-row>
   </md-toolbar>
 
   <div class="gesture-container">

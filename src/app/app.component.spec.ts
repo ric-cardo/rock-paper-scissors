@@ -40,13 +40,31 @@ describe('AppComponent', () => {
     expect(app.title).toEqual('rock paper scissors');
   }));
 
+  describe('ngInit()', () => {
+    
+    it('should set stats to stored stats value', () => {
+      const fixture = TestBed.createComponent(AppComponent);
+      const component = fixture.debugElement.componentInstance;
+      const expected = {win:11,draw:1,lose:0};
+      let actual;
+
+      spyOn(component.gameService,'getStats').and.returnValue({win:11,draw:1,lose:0});
+      
+      component.ngOnInit();
+      actual = component.stats;
+      
+      expect(expected).toEqual(actual);
+    });
+      
+  })
   
   describe('play()', () => {
 
     it('should get game result',() =>{
       const fixture = TestBed.createComponent(AppComponent);
       const component = fixture.debugElement.componentInstance;
-      
+      component.stats = {win:0,draw:0,lose:0};
+
       spyOn(component.gameService,'getResult');
       spyOn(component.gameService,'getRandomGesture').and.returnValue('scissors');
       component.play('rock');
@@ -57,7 +75,8 @@ describe('AppComponent', () => {
     it('should open game result in dialog', () => {
       const fixture = TestBed.createComponent(AppComponent);
       const component = fixture.debugElement.componentInstance;
-      
+      component.stats = {win:0,draw:0,lose:0};
+
       spyOn(component.dialog,'open')
 
       spyOn(component.gameService,'getResult').and.returnValue('win');
@@ -76,7 +95,47 @@ describe('AppComponent', () => {
         }
       );
     });
+
+    it('should update and save result to stats', () => {
+      const fixture = TestBed.createComponent(AppComponent);
+      const component = fixture.debugElement.componentInstance;
+      
+      component.stats = {win:0,draw:0,lose:0};
+      spyOn(component.gameService,'saveStats')
+
+      spyOn(component.gameService,'getResult').and.returnValue('win');
+      spyOn(component.gameService,'getRandomGesture').and.returnValue('scissors');
+      component.play('rock');
+
+      expect(component.stats.win).toBe(1);
+      expect(component.gameService.saveStats)
+        .toHaveBeenCalledWith(
+          {win:1,draw:0,lose:0}
+        );
+    });
+
+    
       
   });
+
+  describe('reset()', () => {
+    
+    it('should reset stats to default value', () => {
+      const fixture = TestBed.createComponent(AppComponent);
+      const component = fixture.debugElement.componentInstance;
+      const expected = {win:0,draw:0,lose:0};
+      let actual;
+
+      component.stats = {win:11,draw:1,lose:0};
+
+      spyOn(component.gameService,'getStats').and.returnValue({win:0,draw:0,lose:0});
+      
+      component.reset();
+      actual = component.stats;
+      
+      expect(expected).toEqual(actual);
+    });
+      
+  })
     
 });

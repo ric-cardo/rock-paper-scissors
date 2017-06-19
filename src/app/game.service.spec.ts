@@ -91,4 +91,59 @@ describe('GameService', () => {
         expect(expected).toBe(actual);
     });   
   })
+
+  describe('getStats()', () =>{
+    beforeEach(() => {
+      window.localStorage.clear();
+    });
+    it('should return default stats when no stats stored', () => {
+        const expected = {win:0,draw:0,lose:0};
+        const actual = gameService.getStats();
+        
+        expect(expected).toEqual(actual);
+    });
+
+    it('should return saved stats', () => {
+        const expected = {win:11,draw:1,lose:0};
+        let actual;
+        
+        window.localStorage.setItem('stats',JSON.stringify({win:11,draw:1,lose:0}))
+        actual = gameService.getStats();
+        
+        expect(expected).toEqual(actual);
+    });    
+  })
+
+  describe('saveStats()', () =>{
+    beforeEach(() => {
+      window.localStorage.clear();
+    });
+    it('should store stats', () => {
+        const expected = {win:10,draw:20,lose:30};
+        let actual;
+
+        gameService.saveStats({win:10,draw:20,lose:30});
+        actual = JSON.parse(window.localStorage.getItem('stats'));
+        
+        expect(expected).toEqual(actual);
+    });    
+  })
+
+  describe('resetStats()', () =>{
+    beforeEach(() => {
+      window.localStorage.clear();
+    });
+    it('should reset stats to default value', () => {
+        const expected = {win:0,draw:0,lose:0};
+        let actual;
+
+        window.localStorage.setItem('stats',JSON.stringify({win:11,draw:1,lose:30}));
+        gameService.resetStats();
+
+        actual = JSON.parse(window.localStorage.getItem('stats'));
+        
+        expect(expected).toEqual(actual);
+    });    
+  })
+  
 });

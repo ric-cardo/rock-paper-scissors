@@ -33,6 +33,18 @@ export class GameService {
    return this.options[index];
   }
 
+  getStats(){
+    return JSON.parse(window.localStorage.getItem('stats')) || {win:0,draw:0,lose:0};
+  }
+
+  saveStats(stats){
+    window.localStorage.setItem('stats',JSON.stringify(stats));
+  }
+
+  resetStats(){
+   this.saveStats( {win:0,draw:0,lose:0});
+  }
+
 
 
 }
