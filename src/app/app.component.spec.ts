@@ -67,6 +67,7 @@ describe('AppComponent', () => {
       expect(component.dialog.open).toHaveBeenCalledWith(
         ResultComponent,
         {
+          width:jasmine.any(String),
           data:{
             gesture1:'rock',
             gesture2:'scissors',
